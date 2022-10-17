@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Basics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Vue Events</h1>
+  </header>
+  <section id="events">
+    <h2>Events in Action</h2>
+    <!-- short hand of v-on: is @
+    we can use @ instead of v-on:
+    -->
+    <button @click="add">Add</button>
+    <button v-on:click="reduce()">Reduce</button>
+    <button @click="add5(5)">Add 5</button>
+    <button v-on:click="reduce5(5)">Reduce 5</button>
+    <button v-on:click="reset">Reset</button>
+    <!-- v-one is binding data only  once -->
+    <p v-once>Starting Counter: {{counter}}</p>
+    <p>Result: {{ counter }}</p>
+    <!-- shart hand of v-bind: is colon :
+    we can use : instead of v-bind: -->
+    <input type="text" v-bind:value="name" V-on:input="setName($event)" v-on:keyup.enter="confirmInput" />
+    <!-- v-model is shortcut of v-on and v-bind input. example above input is in below as v-model -->
+    <!-- v-model is using for two way binding
+       1. v-model can listing output and input event.
+       2. at the same time can communicate both way
+       3. throught value attribute
+       4. throught value property
+       -->
+    <input type="text" v-model="name" />
+    <input type="text" v-model="lastName" />
+
+    <button v-on:click="resetInput">Reset Input</button>
+    <p>Your Name: {{ name }}</p>
+    <h2>Event Modifier</h2>
+    <!-- key modifier.. after click on the input feild when user will press enter key data will show -->
+    <p>Your Name: {{ confirmedName }}</p>
+    <!-- life click will be dissable -->
+    <button v-on:click.left="reset">Reset</button>
+    <form v-on:submit.prevent="submitForm">
+      <input type="text" />
+      <button>Sign Up</button>
+    </form>
+    <!-- <p>Your Name: {{ outputFullname() }}</p> -->
+
+    <p>Your Name: {{ fullname }}</p>
+
+  </section>
+</body>
+
+</html>
